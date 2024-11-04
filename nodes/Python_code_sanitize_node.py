@@ -66,16 +66,12 @@ def sanitize_python_script(state:AgentState) -> Literal[ "execute_python_code", 
     response = sanitize_chain.invoke({'input': ''})
     
     if response.is_safe == True:
-        # print("Python script is safe to execute.\n")
-        # print(f"Python script: {python_script}\n")
         state.update({
             "script_security_issues": None,
         })
         print("------ Python script is safe to execute.\n")
         return "execute_python_code"
     else:
-        # print(f"Security Issues Found ({Python_script_check}): {response.reason}\n")
-        # print(f"Python script: {python_script}\n")
         if Python_script_check >= max_Python_script_check:
             return END
         Python_script_check = Python_script_check + 1

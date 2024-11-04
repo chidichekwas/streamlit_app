@@ -12,27 +12,6 @@ from decouple import config
 from nodes.agent_state import AgentState
 
 
-# llm = ChatOllama(
-#     model="llama3.2",
-#     temperature=0,
-# )
-
-
-df_columns = """
-    PassengerId: A unique identifier for each passenger.
-    Survived: Indicates whether the passenger survived (1) or not (0).
-    Pclass: Passenger class (1st, 2nd, or 3rd class).
-    Name: The full name of the passenger.
-    Sex: The gender of the passenger (male or female).
-    Age: The age of the passenger in years.
-    SibSp: The number of siblings or spouses aboard the Titanic.
-    Parch: The number of parents or children aboard the Titanic.
-    Ticket: The ticket number of the passenger.
-    Fare: The fare paid for the ticket.
-    Cabin: The cabin number where the passenger stayed.
-    Embarked: Port of embarkation (C = Cherbourg, Q = Queenstown, S = Southampton).
-"""
-
 sys_msg = """
         1. You are working with a pandas data frame called df in Python. Do not generate a new data frame. 
         2. The output of `print(df.head())` is:\n {df_head}.
@@ -66,8 +45,6 @@ def generate_Python_code(state: AgentState) -> AgentState:
     chain = prompt | llm | StrOutputParser()
     
     code = chain.invoke({"df_head": df_head, "df_columns": column_description})
-
-    print(f'Generated Python Script:\n{code}\n')
 
     return {
         "Python_Code" : code,

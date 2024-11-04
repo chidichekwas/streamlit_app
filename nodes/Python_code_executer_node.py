@@ -15,7 +15,6 @@ def run_python_code(state: AgentState) -> AgentState:
     try: 
         results = python_repl.run(Python_script)     
         if "error" in results.lower():
-            # print(f"Execution Results: {results}")
             return {
                 "execution_error": results
             }
@@ -25,7 +24,6 @@ def run_python_code(state: AgentState) -> AgentState:
                 "execution_error": None
             }
     except Exception as e:
-        # print(f"Execution Error: {e}")
         return {
             "execution_error": str(e)
         }

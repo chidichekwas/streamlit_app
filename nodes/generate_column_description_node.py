@@ -26,9 +26,7 @@ def generate_column_description(state: AgentState) -> AgentState:
     print("--- GENERATE COLUMN DESCRIPTION ---")
 
     OPENAI_API_KEY = config("OPENAI_API_KEY")
-    print(f"OPENAI_API_KEY:")
     GPT_MODEL = config("GPT_MODEL")
-    print(f"GPT_MODEL:{GPT_MODEL}")
 
     csv_file_path = state["csv_file_path"]
     

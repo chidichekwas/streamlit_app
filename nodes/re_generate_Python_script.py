@@ -56,8 +56,6 @@ def re_generate_Python_code(state: AgentState) -> AgentState:
     chain = prompt | llm | StrOutputParser()
     code = chain.invoke({"df_head": df_head, "df_columns": column_description, "Python_script": Python_script, "security_issue": script_security_issues, "execution_error": execution_error})
 
-    print(f'Re-generated Python Script:\n{code}\n')
-
     return {
         "Python_Code" : code,
         "Python_script_check": Python_script_check + 1
