@@ -1,0 +1,8 @@
+python-decouple>=3.8
+langchain>=0.3.2
+langgraph>=0.2.34
+langchain_openai>=0.2.2
+langchain_community>=0.3.1
+langchain-experimental>=0.3.0
+streamlit>=1.39.0
+sqlalchemy>=2.0.31

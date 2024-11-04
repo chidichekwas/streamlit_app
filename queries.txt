@@ -1,0 +1,25 @@
+Display random 10 raws from the dataset
+Generate a summary of the data in this CSV file
+Analyze the dataset in details
+How many people have more than 3 siblings
+What was the survival rate across different passenger classes?
+How does age affect the likelihood of survival?
+What percentage of passengers were traveling with family members (siblings/spouses or parents/children)?
+Is there a difference in survival rates between male and female passengers?
+From which port did most passengers embark, and did embarkation port affect survival rates?
+What was the average fare paid by passengers in each class?
+Did having a cabin (versus not having one listed) correlate with higher survival rates?
+What was the survival rate for children (e.g., age 16 and under) compared to adults?
+How many passengers traveled alone, and how does this group’s survival rate compare to those who traveled with family?
+Is there any relationship between the passenger's age and the fare they paid.
+Analyze the distribution of passenger age across different classes.
+If there is any pattern in fare paid by passengers who survived vs. those who did not.
+What percentage of passengers survived vs. did not survive?
+Show pie chart of gender distribution.
+How does the age distribution vary across different passenger classes?
+Create box plot for fare vs class.
+Create box plot for age vs sex.
+Create Line chart of fare trends
+Show survival rate trend by age
+Visualize the proportion of passengers from each embarkation port
+Show how the survival rate changes with age.
