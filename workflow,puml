@@ -6,29 +6,29 @@
     !define DiamondNode(x) class x << (D,#ADD1B2) >>
 
     START: start
-    generate_Python_code : Python code generator\n(Node)
-    sanitize_python_script: Python script sanitizer\n(Node)
-    execute_python_code: Python code executer\n(Node)
-    re_generate_python_code : Python code re-generator\n(Node)
-    make_decision : Check if there is is any error or not \n(Node)
-    generate_report : Report generator\n(Node)
+    Python_Code_Generation : Python code generator\n(Node)
+    Script_Sanitization : Python script sanitizer\n(Node)
+    Code_Execution : Python code executer\n(Node)
+    Python_Code_Re_Generation : Python code re-generator\n(Node)
+    Error_Handling : Check if there is is any error or not \n(Node)
+    Report_Generation : Report generator\n(Node)
     
     END: End
 
 
-    START --> generate_Python_code: (query)
-    generate_Python_code --> sanitize_python_script
+    START --> Python_Code_Generation: (query)
+    Python_Code_Generation --> Script_Sanitization
 
-    sanitize_python_script --> execute_python_code: If Python code is safe to execute
-    sanitize_python_script --> re_generate_python_code: If Python code is not safe to execute
-    sanitize_python_script --> END: If safe code generation failed after 5 tries
+    Script_Sanitization--> Code_Execution: If Python code is safe to execute
+    Script_Sanitization--> Python_Code_Re_Generation : If Python code is not safe to execute
+    Script_Sanitization--> END: If safe code generation failed after 5 tries
 
-    execute_python_code --> make_decision
-    make_decision --> generate_report: If no error in Python code execution
-    make_decision --> re_generate_python_code: If error in Python code execution
-    make_decision --> END: if Python code execution failed  after 5 tries
+    Code_Execution --> Error_Handling 
+    Error_Handling --> Report_Generation : If no error in Python code execution
+    Error_Handling --> Python_Code_Re_Generation : If error in Python code execution
+    Error_Handling --> END: if Python code execution failed  after 5 tries
     
-    re_generate_python_code --> execute_python_code
-    generate_report --> END
+    Python_Code_Re_Generation --> Code_Execution
+    Report_Generation --> END
 
 @enduml
