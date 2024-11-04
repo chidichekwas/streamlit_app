@@ -87,7 +87,7 @@ def download_reports_with_png(query, report):
 
         # Add PNG files to the ZIP
         for file_name, content in png_files.items():
-            zip_file.writestr(file_name, content)
+            zip_file.writestr(f"images/{file_name}", content)
 
     zip_buffer.seek(0)  # Move the buffer pointer to the start
 
@@ -104,12 +104,12 @@ def download_reports_with_png(query, report):
 
 def update_headings(text):
     # Replace headings in the order from largest to smallest to prevent conflicts
-    text = re.sub(r'(?m)^###### ', '####### ', text)  # Handle heading 6, if any
-    text = re.sub(r'(?m)^##### ', '###### ', text)
-    text = re.sub(r'(?m)^#### ', '##### ', text)
-    text = re.sub(r'(?m)^### ', '#### ', text)
-    text = re.sub(r'(?m)^## ', '### ', text)
-    text = re.sub(r'(?m)^# ', '## ', text)
+    text = re.sub(r'(?m)^###### ', '######## ', text)  # Handle heading 6, if any
+    text = re.sub(r'(?m)^##### ', '####### ', text)
+    text = re.sub(r'(?m)^#### ', '###### ', text)
+    text = re.sub(r'(?m)^### ', '##### ', text)
+    text = re.sub(r'(?m)^## ', '#### ', text)
+    text = re.sub(r'(?m)^# ', '### ', text)
     return text
 
 def display_reports(markdown_text):
@@ -189,14 +189,14 @@ def data_analysis_content():
 
         if st.session_state['last_report']:
             query, report = st.session_state['last_report']
-            st.markdown(f"## Query: {query}")
+            st.markdown(f"### Query: {query}")
             display_reports(report)
             download_reports_with_png(query, report)
 
         st.subheader("Chat History")
         total_history = len(st.session_state['history']) 
         for i, (query, report) in enumerate(reversed(st.session_state['history'])):
-            st.markdown(f"## Query {total_history - i}: {query}")
+            st.markdown(f"### Query {total_history - i}: {query}")
             display_reports(report)
             download_reports_with_png(query, report)
     else:

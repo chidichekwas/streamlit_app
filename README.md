@@ -11,7 +11,7 @@ Follow these steps to deploy the workflow:
    cd csv_data_analysis
    ```
 
-2. **Create a Conda environment**:
+2. **Create a Conda environment (Assuming Anaconda is installed):**:
    ```bash
    conda create -n csv_analysis_env python=3.11
    ```
