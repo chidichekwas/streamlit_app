@@ -239,7 +239,7 @@ def load_csv_content():
         
         # Display editable column description below
         updated_description = st.text_area(
-            "Edit Column Description",
+            "Modify Column Descriptions (Data Dictionary)",
             value=st.session_state['editable_column_description'],
             height=250
         )
