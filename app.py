@@ -11,9 +11,11 @@ import pandas as pd
 from graph_executer import get_reports, get_column_description
 from file_manager_db import insert_file_info, get_all_file_info, update_column_description
 from dotenv import load_dotenv, set_key
+from decouple import config
+from decouple import AutoConfig
 
 load_dotenv()
-
+config = AutoConfig()
 data_directory = os.path.join(os.path.dirname(__file__), "data")
 
 
@@ -31,9 +33,9 @@ if 'editable_column_description' not in st.session_state:
 if 'dataframe' not in st.session_state:
     st.session_state['dataframe'] = None  # Store the DataFrame directly in session state
 if 'openai_api_key' not in st.session_state:
-    st.session_state['openai_api_key'] = os.getenv("OPENAI_API_KEY", "")
+    st.session_state['openai_api_key'] = config("OPENAI_API_KEY", default="")
 if 'gpt_model' not in st.session_state:
-    st.session_state['gpt_model'] = os.getenv("GPT_MODEL", None)
+    st.session_state['gpt_model'] = config("GPT_MODEL", default="gpt-4o")
 
 def update_env_variable(key, value):
     env_path = ".env"
@@ -267,7 +269,9 @@ def configuration_content():
         st.session_state['openai_api_key'] = api_key_input
         st.session_state['gpt_model'] = model_name_input
         update_env_variable("OPENAI_API_KEY", api_key_input)
+        st.session_state['openai_api_key'] = api_key_input
         update_env_variable("GPT_MODEL", model_name_input)
+        st.session_state['gpt_model'] = model_name_input
         load_dotenv()
         st.success("Configuration saved successfully!")
 
