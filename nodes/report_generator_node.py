@@ -18,7 +18,9 @@ user_msg = """
     {df_columns}
     User asked a question: {query}
     Write a report on user's query in professional tone using plain and simple English. 
+    Combine numerical analysis with observations, visualizations and charts.
     Report should reflect only the answer of the user's query based on {execution_results} in Markdown format.
+    DO NOT INCLUDE ```markdown TAGS IN YOUR RESPONSE.
     Do not include any other text or your assumptions in the report.
     """
 
