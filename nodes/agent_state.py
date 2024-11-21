@@ -8,7 +8,7 @@ from pydantic import BaseModel
 class AgentState(TypedDict):
     # messages: Annotated[list[AnyMessage], add_messages]
     query: str
-    is_query_relevant: bool
+    next_node: str
     rephrased_query: str
     csv_file_path: str
     column_description: str

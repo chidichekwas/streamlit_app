@@ -46,9 +46,12 @@ def check_query_relevancy(state: AgentState) -> AgentState:
     )
     grade = scored_result.binary_score
 
+    
     if grade == "yes":
-        return {"is_query_relevant" : True}
+        # return "re_write_query"
+        return {"next_node": "re_write_query"}
     else:
-
-        return {"is_query_relevant": False}
+        # return "query_relevancy_report"
+        return {"next_node": "query_relevancy_report"}
+        
 

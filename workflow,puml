@@ -6,6 +6,9 @@
     !define DiamondNode(x) class x << (D,#ADD1B2) >>
 
     START: start
+    query_relevancy_checker : Determine whether the user's query is relevant to this Data \n(ConditionalNode)
+    query_relevancy_report : Show user query relevancy message if query is not relevant.\n(Node)
+    re_write_query : Rewrite the query to make it more specific, structured, and aligned with the schema provided.\n(Node)
     Python_Code_Generation : Python code generator\n(Node)
     Script_Sanitization : Python script sanitizer\n(Node)
     Code_Execution : Python code executer\n(Node)
@@ -16,7 +19,13 @@
     END: End
 
 
-    START --> Python_Code_Generation: (query)
+    START --> query_relevancy_checker: Determine whether the user's query is relevant 
+
+    query_relevancy_checker --> query_relevancy_report: if query is not relevant
+    query_relevancy_checker --> re_write_query: if query is relevant
+
+
+    re_write_query --> Python_Code_Generation
     Python_Code_Generation --> Script_Sanitization
 
     Script_Sanitization--> Code_Execution: If Python code is safe to execute
@@ -29,6 +38,8 @@
     Error_Handling --> END: if Python code execution failed  after 5 tries
     
     Python_Code_Re_Generation --> Code_Execution
+
+    query_relevancy_report --> END
     Report_Generation --> END
 
 @enduml
