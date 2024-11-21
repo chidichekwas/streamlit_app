@@ -38,7 +38,7 @@ def re_generate_Python_code(state: AgentState) -> AgentState:
 
     Python_script = state["Python_Code"]
     column_description = state["column_description"]
-    df = state["dataframe"]
+    df = state["data_frame"]
     script_security_issues = state.get("script_security_issues", "")
     execution_error = state.get("execution_error", "")
     Python_script_check = state['Python_script_check']

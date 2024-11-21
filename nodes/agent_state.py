@@ -8,9 +8,11 @@ from pydantic import BaseModel
 class AgentState(TypedDict):
     # messages: Annotated[list[AnyMessage], add_messages]
     query: str
+    is_query_relevant: bool
+    rephrased_query: str
     csv_file_path: str
     column_description: str
-    dataframe: pd.DataFrame
+    data_frame: pd.DataFrame
     Python_Code: str
     Python_script_check: int
     execution_error: str

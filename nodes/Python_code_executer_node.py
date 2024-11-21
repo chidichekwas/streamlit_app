@@ -7,7 +7,7 @@ def run_python_code(state: AgentState) -> AgentState:
     print("--- PYTHON CODE EXECUTER ---")
     Python_script = state['Python_Code']
     
-    df = state["dataframe"]
+    df = state["data_frame"]
     df_locals={}
     df_locals["df"] = df
     python_repl = PythonAstREPLTool(locals=df_locals)

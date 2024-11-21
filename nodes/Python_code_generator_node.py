@@ -27,7 +27,15 @@ def generate_Python_code(state: AgentState) -> AgentState:
     OPENAI_API_KEY = config("OPENAI_API_KEY")
     GPT_MODEL = config("GPT_MODEL")
 
-    user_msg = state["query"]
+    rephrased_query = state["rephrased_query"]
+    rephrased_query = f"""
+    {rephrased_query}
+    Do it in Python and generate a single report. 
+    Combine numerical analysis with observations, visualizations and charts.
+    If any visualization is needed, save it in images folder with unique file name including uuid.
+    Include the saved image with its RELATIVE PATH in the reports as markdown. 
+    Generate the reports in markdown format (DO NOT INCLUDE ```markdown) and print the markdown reports.
+    """
     csv_file_path = state["csv_file_path"]
     column_description = state["column_description"]
     df = pd.read_csv(csv_file_path)
@@ -36,7 +44,7 @@ def generate_Python_code(state: AgentState) -> AgentState:
     prompt = ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(sys_msg),
-            HumanMessagePromptTemplate.from_template(user_msg),
+            HumanMessagePromptTemplate.from_template(rephrased_query),
         ]
     )
 
@@ -47,6 +55,7 @@ def generate_Python_code(state: AgentState) -> AgentState:
     code = chain.invoke({"df_head": df_head, "df_columns": column_description})
 
     return {
+        "rephrased_query": rephrased_query,
         "Python_Code" : code,
-        "dataframe": df,
+        "data_frame": df,
     }
