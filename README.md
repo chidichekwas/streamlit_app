@@ -35,3 +35,6 @@ To remove the environment when done:
 ```bash
 conda remove --name csv_analysis_env --all
 ```
+
+
+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
