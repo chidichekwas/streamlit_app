@@ -169,7 +169,7 @@ def submit_query():
     st.session_state['query'] = ''
 
 # Title of the app
-st.title("Question Answering on CSV Files")
+st.title("Bank Analysis on CSV Files")
 
 def data_analysis_content():
     st.subheader("Select Dataset for Analysis")
