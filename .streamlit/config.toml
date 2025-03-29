@@ -1,1 +1,2 @@
---server.enableXsrfProtection=false
+[server]
+enableXsrfProtection = false
