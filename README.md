@@ -35,3 +35,6 @@ To remove the environment when done:
 ```bash
 conda remove --name csv_analysis_env --all
 ```
+
+
+
