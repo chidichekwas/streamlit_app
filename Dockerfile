@@ -7,5 +7,4 @@ COPY . ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8080", "--server.address=0.0.0.0", "--server.enableXsrfProtection false"
-]
+ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8080", "--server.address=0.0.0.0"]
