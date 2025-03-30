@@ -1,0 +1,15 @@
+[server]
+port = 8080
+enableCORS = false
+maxCacheSize = 2048
+enableXsrfProtection=false
+maxUploadSize = 4096
+runOnSave = true
+enableStaticServing = true
+enableWebsocketCompression = false
+
+[browser]
+serverPort = 8080
+
+[logger]
+level = "debug"
