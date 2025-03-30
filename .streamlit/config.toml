@@ -1,3 +1,11 @@
 [server]
-enableCORS=false
+port = 8501
+enableCORS = false
 enableXsrfProtection=false
+maxUploadSize = 500
+
+[browser]
+serverPort = 8501
+
+[logger]
+level = "debug"
