@@ -4,13 +4,12 @@ EXPOSE  8501
 
 WORKDIR /app
 
-# Copy requirements file
-COPY requirements.txt .
+ENV PIP_ROOT_USER_ACTION=ignore
 
 # Create and activate virtual environment
 RUN python3 -m venv venv
 RUN . venv/bin/activate
-
+COPY requirements.txt .
 RUN pip install --upgrade pip
 
 # Install dependencies
