@@ -7,11 +7,11 @@ WORKDIR /app
 # Copy requirements file
 COPY requirements.txt .
 
-RUN pip install --upgrade pip
-
 # Create and activate virtual environment
 RUN python3 -m venv venv
 RUN . venv/bin/activate
+
+RUN pip install --upgrade pip
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
