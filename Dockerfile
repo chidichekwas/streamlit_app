@@ -1,21 +1,20 @@
 FROM python:3.12-slim
 
-
-
 WORKDIR /app
 
 COPY requirements.txt .
 
+# Create and activate virtual environment
+RUN python -m venv venv
+RUN . venv/bin/activate
 #RUN python3 -m pip install --upgrade pip
 
 RUN pip install --upgrade pip --user
 
 # install pip then packages
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Create and activate virtual environment
-#RUN python3 -m venv venv
-#RUN . venv/bin/activate
+
 # COPY requirements.txt .
 #RUN pip install --upgrade pip
 
