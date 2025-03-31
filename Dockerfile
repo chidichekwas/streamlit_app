@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy requirements file
 COPY requirements.txt .
 
+RUN pip install --upgrade pip
+
 # Create and activate virtual environment
 RUN python -m venv venv
 RUN . venv/bin/activate
