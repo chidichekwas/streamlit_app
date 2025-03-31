@@ -13,15 +13,8 @@ RUN pip install --upgrade pip
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-
 # Copy the Streamlit app code into the container
 COPY . .
-
-# This command creates a .streamlit directory in the home directory of the container.
-RUN mkdir ~/.streamlit
-
-# This copies your Streamlit configuration file into the .streamlit directory you just created.
-RUN cp config.toml ~/.streamlit/config.toml
 
 ENV PIP_ROOT_USER_ACTION=ignore
 # This copies everything in your current directory to the /app directory in the container.
