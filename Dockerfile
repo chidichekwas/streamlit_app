@@ -3,9 +3,16 @@ FROM python:3.12
 WORKDIR /app
 
 COPY requirements.txt .
-RUN python3 -m venv venv && \
-    source venv/bin/activate && \
-    pip install --no-cache-dir -r requirements.txt
+
+# Create and activate virtual environment
+RUN python3 -m venv venv
+RUN . venv/bin/activate
+# COPY requirements.txt .
+RUN pip install --upgrade pip
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
 
 # Copy the Streamlit app code into the container
 COPY . .
