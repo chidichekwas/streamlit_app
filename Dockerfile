@@ -4,9 +4,18 @@ EXPOSE  8501
 
 WORKDIR /app
 
+# Copy requirements file
+COPY requirements.txt .
+
+# Create and activate virtual environment
+RUN python -m venv venv
+RUN . venv/bin/activate
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code
 COPY . ./
-RUN pip install -U pip
-RUN pip install -r requirements.txt
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
