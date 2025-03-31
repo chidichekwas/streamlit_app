@@ -15,5 +15,4 @@ deployment:
         region: us-central1
         memory: "1Gi"
         cpu: 1
-        concurrency: 80
         timeout: 300
