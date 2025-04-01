@@ -6,7 +6,7 @@ build:
   package_manager: pip
   
 profile: default
-project_id: 43796618-c4e5-467d-8113-4a2bedeb38e2
+project_id:
 
   # Deployment Settings
 deployment:
