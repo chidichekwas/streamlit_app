@@ -11,4 +11,9 @@ project_id:
   # Deployment Settings
 deployment:
     provider: gcp
+    gcp:
+        region: us-central1
+        memory: "1Gi"
+        cpu: 1
+        timeout: 300
   
